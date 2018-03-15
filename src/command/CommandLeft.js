@@ -1,0 +1,7 @@
+class CommandLeft {
+
+    execute() { 
+
+        return "";
+    }
+}

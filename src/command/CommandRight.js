@@ -1,0 +1,7 @@
+class CommandRight {
+
+    execute() { 
+
+        return "";
+    }
+}
