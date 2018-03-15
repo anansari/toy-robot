@@ -1,3 +1,5 @@
+import {Enum} from 'enumify';
+
 export default class Position {
 
     constructor(x, y, direction) {
@@ -6,3 +8,6 @@ export default class Position {
         this.direction = direction;
     }
 }
+
+export class Direction extends Enum {}
+Direction.initEnum(['NORTH', 'EAST', 'SOUTH', "WEST"]);

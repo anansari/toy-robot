@@ -13,36 +13,35 @@ export default class Commander {
 
     execute(command) {
         // TODO:parse the command here
-        
+
         let x = 3;
         let y = 4;
         let direction = "NORTH"
 
         let response = "";
         command = "PLACE";
-        
+
         let currentPosition = this.robot.currentPosition();
         let position = new Position(currentPosition.x, currentPosition.y, currentPosition.direction);
-        
+
         switch (command) {
             case "PLACE":
-            position = new Position(x, y, direction);
-            response = (new CommandPlace(this.robot)).execute(position);
+                position = new Position(x, y, direction);
+                (new CommandPlace(this.robot)).execute(position);
                 break;
             case "MOVE":
-            response = (new CommandMove(this.robot)).execute(position);
+                (new CommandMove(this.robot)).execute(position);
                 break;
             case "LEFT":
-            response = (new CommandLeft(this.robot)).execute(position);
+                (new CommandLeft(this.robot)).execute(position);
                 break;
             case "RIGHT":
-            response = (new CommandRight(this.robot)).execute(position);
+                (new CommandRight(this.robot)).execute(position);
                 break;
             case "REPORT":
-            response = this.robot.currentPosition();
                 break;
         }
 
-        return response;
+        return this.robot.currentPosition();;
     }
 }
