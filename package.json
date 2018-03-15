@@ -1,0 +1,23 @@
+{
+  "name": "toy-robot",
+  "version": "1.0.0",
+  "description": "This is the toy bot which crawls on 5x5 grid.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.realestate.com.au:recruiting/toy-robot.git"
+  },
+  "author": "Aneel Ansari",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "yarn": "^1.5.1"
+  }
+}
