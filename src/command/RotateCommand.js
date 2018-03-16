@@ -1,10 +1,7 @@
 import { Direction } from "@toyrobot/src/Position"
+import AbstractCommand from "@toyrobot/src/command/AbstractCommand"
 
-export default class CommandRotate {
-
-    constructor(robot) {
-        this.robot = robot;
-    }
+export default class RotateCommand extends AbstractCommand {
 
     execute(position, step) {
         let newPosition = position;
@@ -13,9 +10,9 @@ export default class CommandRotate {
         if (index < 0) {
             index = Direction.enumValues.length - 1;
         } else {
-            index = (Direction.enumValueOf(position.direction).ordinal + step) % Direction.enumValues.length;
+            index = index % Direction.enumValues.length;
         }
-        console.log(index);
+
         newPosition.direction = Direction.enumValues[index].name;
         this.robot.setPosition(newPosition);
         return this.robot.currentPosition();

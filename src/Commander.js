@@ -1,7 +1,7 @@
 import Position from "./Position";
-import CommandPlace from "@toyrobot/src/command/CommandPlace";
-import CommandMove from "@toyrobot/src/command/CommandMove";
-import CommandRotate from "@toyrobot/src/command/CommandRotate";
+import CommandPlace from "@toyrobot/src/command/PlaceCommand";
+import CommandMove from "@toyrobot/src/command/MoveCommand";
+import CommandRotate from "@toyrobot/src/command/RotateCommand";
 
 export default class Commander {
 
@@ -46,6 +46,6 @@ export default class Commander {
             //TODO: implement this
         }
 
-        return this.robot.currentPosition();;
+        return this.robot.currentPosition();
     }
 }

@@ -1,7 +1,16 @@
+
 export default class Grid {
 
-    constructor(rows, columns) {
-        this.rows = rows;
-        this.columns = columns;
+    constructor(r, c) {
+        Grid.rows = r;
+        Grid.rows = c;
+    }
+
+    static isPositionValid(position) {
+        return !(position.x < 0 || position.x > Grid.rows ||
+            position.y < 0 || position.y > Grid.rows);
     }
 }
+
+Grid.rows = 0;
+Grid.rows = 0;

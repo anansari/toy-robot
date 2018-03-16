@@ -1,13 +1,14 @@
-import { Direction } from "../Position"
+import { Direction } from "@toyrobot/src/Position"
+import AbstractCommand from "@toyrobot/src/command/AbstractCommand"
 
-export default class CommandMove {
-
-    constructor(robot) {
-        this.robot = robot;
-    }
+export default class MoveCommand extends AbstractCommand {
 
     execute(position) {
-        var newPosition = position;
+        if (!super.execute(position)) {
+            return false;
+        }
+        
+        let newPosition = position;
 
         switch (newPosition.direction) {
             case Direction.NORTH.name:
@@ -22,9 +23,11 @@ export default class CommandMove {
             case Direction.WEST.name:
                 newPosition.x--;
                 break;
+            default:
+                //TODO: handle the implementation
         }
-        
+
         this.robot.setPosition(newPosition);
-        return this.robot.currentPosition();
+        return true;
     }
 }

@@ -1,8 +1,8 @@
 import Position from "./Position";
 
 export default class Robot {
-    constructor() { 
-        this.position = new Position(0,0,"");
+    constructor() {
+        this.position = new Position(0, 0, "");
     }
     currentPosition() {
         return this.position;
