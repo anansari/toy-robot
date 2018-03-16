@@ -1,8 +1,7 @@
 import Position from "./Position";
-import CommandPlace from "./command/CommandPlace";
-import CommandMove from "./command/CommandMove";
-import CommandLeft from "./command/CommandLeft";
-import CommandRight from "./command/CommandRight"
+import CommandPlace from "@toyrobot/src/command/CommandPlace";
+import CommandMove from "@toyrobot/src/command/CommandMove";
+import CommandRotate from "@toyrobot/src/command/CommandRotate";
 
 export default class Commander {
 
@@ -21,6 +20,9 @@ export default class Commander {
         let response = "";
         command = "PLACE";
 
+        const LEFT_MOVEMENT = -1;
+        const RIGHT_MOVEMENT = 1;
+
         let currentPosition = this.robot.currentPosition();
         let position = new Position(currentPosition.x, currentPosition.y, currentPosition.direction);
 
@@ -33,13 +35,15 @@ export default class Commander {
                 (new CommandMove(this.robot)).execute(position);
                 break;
             case "LEFT":
-                (new CommandLeft(this.robot)).execute(position);
+                (new CommandRotate(this.robot)).execute(position, LEFT_MOVEMENT);
                 break;
             case "RIGHT":
-                (new CommandRight(this.robot)).execute(position);
+                (new CommandRotate(this.robot)).execute(position, RIGHT_MOVEMENT);
                 break;
             case "REPORT":
                 break;
+            default:
+            //TODO: implement this
         }
 
         return this.robot.currentPosition();;
