@@ -14,8 +14,7 @@ export default class Commander {
     }
 
     execute(input) {
-        let response = "";
-
+        let response = false;
         let LEFT_MOVEMENT = -1;
         let RIGHT_MOVEMENT = 1;
 
@@ -26,29 +25,36 @@ export default class Commander {
             case Command.PLACE.name:
                 let splited = input.toUpperCase().split(/[ ,]+/);
                 let position = new Position(_.toInteger(splited[1]), _.toInteger(splited[2]), splited[3]);
-                (new PlaceCommand(this.robot)).execute(position);
+                response = (new PlaceCommand(this.robot)).execute(position);
                 break;
             case Command.MOVE.name:
-                let moveCommand = new MoveCommand(this.robot);
-                let p = new Position(currentPosition.x, currentPosition.y, currentPosition.direction);
-                moveCommand.execute((new MoveCommand(this.robot).getNextPosition(p)));
+                if (this.robot.isAlive()) {
+                    let moveCommand = new MoveCommand(this.robot);
+                    let p = new Position(currentPosition.x, currentPosition.y, currentPosition.direction);
+                    response = moveCommand.execute((new MoveCommand(this.robot).getNextPosition(p)));
+                }
                 break;
             case Command.LEFT.name:
-                console.log(Command.LEFT.name);
-                (new RotateCommand(this.robot)).execute(currentPosition, LEFT_MOVEMENT);
+                if (this.robot.isAlive()) {
+                    response = (new RotateCommand(this.robot)).execute(currentPosition, LEFT_MOVEMENT);
+                }
                 break;
             case Command.RIGHT.name:
-                console.log(Command.RIGHT.name);
-                (new RotateCommand(this.robot)).execute(currentPosition, RIGHT_MOVEMENT);
+                if (this.robot.isAlive()) {
+                    response = (new RotateCommand(this.robot)).execute(currentPosition, RIGHT_MOVEMENT);
+                }
                 break;
             case Command.REPORT.name:
-                console.log(this.robot.currentPosition());
+                if (this.robot.isAlive()) {
+                    console.log(this.robot.currentPosition());
+                } else {
+                    console.log("Lets get started by issuing the 'PLACE' command.");
+                }
+
                 break;
             default:
                 console.log(parsedCommand);
-
         }
-
-        return this.robot.currentPosition();
+        return response;
     }
 }

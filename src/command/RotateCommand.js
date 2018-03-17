@@ -15,6 +15,5 @@ export default class RotateCommand extends AbstractCommand {
 
         newPosition.direction = Direction.enumValues[index].name;
         this.robot.setPosition(newPosition);
-        return this.robot.currentPosition();
     }
 }

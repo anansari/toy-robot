@@ -13,4 +13,10 @@ export default class Robot {
         return true;
     }
 
+    isAlive() {
+        if (!this.position.direction) {
+            return false;
+        }
+        return true;
+    }
 }

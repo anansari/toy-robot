@@ -25,8 +25,7 @@ function _letsGetBusy() {
         if (line === "exit") {
             rl.close()
         } else {
-            response = new Commander(robot, grid).execute(line);
-            console.log(response);
+            new Commander(robot, grid).execute(line);
         }
         rl.prompt();
     }).on('close', function () {
