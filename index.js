@@ -1,6 +1,6 @@
-import Grid from "./src/Grid";
-import Robot from "./src/Robot";
-import Commander from "./src/Commander";
+import Grid from "./src/grid/Grid";
+import Robot from "./src/robot/Robot";
+import Commander from "./src/robot/RobotCommander";
 const readline = require('readline');
 
 console.log("Toy Robot Simulator ^.^");

@@ -1,12 +1,12 @@
-import Position from "./Position";
-import PlaceCommand from "./command/PlaceCommand";
-import MoveCommand from "./command/MoveCommand";
-import RotateCommand from "./command/RotateCommand";
-import InputParser from "./helper/InputParser";
-import { Command } from "./command/Command";
+import Position from "../helper/Position";
+import PlaceCommand from "../command/PlaceCommand";
+import MoveCommand from "../command/MoveCommand";
+import RotateCommand from "../command/RotateCommand";
+import InputParser from "../helper/InputParser";
+import { Command } from "../command/Command";
 import _ from "lodash";
 
-export default class Commander {
+export default class RobotCommander {
 
     constructor(robot, grid) {
         this.robot = robot;

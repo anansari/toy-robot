@@ -1,4 +1,4 @@
-import Position from "./Position";
+import Position from "../helper/Position";
 
 export default class Robot {
     constructor() {

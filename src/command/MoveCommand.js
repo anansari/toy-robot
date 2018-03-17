@@ -1,4 +1,4 @@
-import { Direction } from "../Position"
+import { Direction } from "../helper/Position"
 import AbstractCommand from "./AbstractCommand"
 
 export default class MoveCommand extends AbstractCommand {
