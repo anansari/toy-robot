@@ -21,7 +21,7 @@ export default class RobotCommander {
      * @param {String} input 
      */
     execute(input) {
-        let response = false;
+        let response = "";
         let LEFT_MOVEMENT = -1;
         let RIGHT_MOVEMENT = 1;
 
@@ -32,28 +32,28 @@ export default class RobotCommander {
             case Command.PLACE.name:
                 let splited = input.toUpperCase().split(/[ ,]+/);
                 let position = new Position(_.toInteger(splited[1]), _.toInteger(splited[2]), splited[3]);
-                response = (new PlaceCommand(this.robot)).execute(position);
+                (new PlaceCommand(this.robot)).execute(position);
                 break;
             case Command.MOVE.name:
                 if (this.robot.isAlive()) {
                     let moveCommand = new MoveCommand(this.robot);
                     let p = new Position(currentPosition.x, currentPosition.y, currentPosition.direction);
-                    response = moveCommand.execute((new MoveCommand(this.robot).getNextPosition(p)));
+                    moveCommand.execute((new MoveCommand(this.robot).getNextPosition(p)));
                 }
                 break;
             case Command.LEFT.name:
                 if (this.robot.isAlive()) {
-                    response = (new RotateCommand(this.robot)).execute(currentPosition, LEFT_MOVEMENT);
+                    (new RotateCommand(this.robot)).execute(currentPosition, LEFT_MOVEMENT);
                 }
                 break;
             case Command.RIGHT.name:
                 if (this.robot.isAlive()) {
-                    response = (new RotateCommand(this.robot)).execute(currentPosition, RIGHT_MOVEMENT);
+                    (new RotateCommand(this.robot)).execute(currentPosition, RIGHT_MOVEMENT);
                 }
                 break;
             case Command.REPORT.name:
                 if (this.robot.isAlive()) {
-                    console.log(this.robot.currentPosition());
+                    response = this.robot.currentPosition();
                 } else {
                     console.log("Lets get started by issuing the 'PLACE' command.");
                 }

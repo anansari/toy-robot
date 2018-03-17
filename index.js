@@ -23,7 +23,6 @@ function _letsGetBusy() {
 
     let readline = require('readline');
     let rl = readline.createInterface(process.stdin, process.stdout);
-    let response = "";
 
     rl.setPrompt('robot> ');
     rl.prompt();
@@ -31,7 +30,10 @@ function _letsGetBusy() {
         if (line === "exit") {
             rl.close()
         } else {
-            new Commander(robot, grid).execute(line);
+            let response = new Commander(robot, grid).execute(line);
+            if (response) {
+                console.log(response.x + "," + response.y + "," + response.direction);
+            }
         }
         rl.prompt();
     }).on('close', function () {
