@@ -1,5 +1,5 @@
-import { Direction } from "@toyrobot/src/Position"
-import AbstractCommand from "@toyrobot/src/command/AbstractCommand"
+import { Direction } from "../Position"
+import AbstractCommand from "./AbstractCommand"
 
 export default class RotateCommand extends AbstractCommand {
 

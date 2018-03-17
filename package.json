@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "enumify": "^1.0.4",
+    "lodash": "^4.17.5",
     "yarn": "^1.5.1"
   }
 }

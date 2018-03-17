@@ -1,7 +1,10 @@
 import Position from "./Position";
-import CommandPlace from "@toyrobot/src/command/PlaceCommand";
-import CommandMove from "@toyrobot/src/command/MoveCommand";
-import CommandRotate from "@toyrobot/src/command/RotateCommand";
+import PlaceCommand from "./command/PlaceCommand";
+import MoveCommand from "./command/MoveCommand";
+import RotateCommand from "./command/RotateCommand";
+import InputParser from "./helper/InputParser";
+import { Command } from "./command/Command";
+import _ from "lodash";
 
 export default class Commander {
 
@@ -10,40 +13,40 @@ export default class Commander {
         this.grid = grid
     }
 
-    execute(command) {
-        // TODO:parse the command here
-
-        let x = 3;
-        let y = 4;
-        let direction = "NORTH"
-
+    execute(input) {
         let response = "";
-        command = "PLACE";
 
-        const LEFT_MOVEMENT = -1;
-        const RIGHT_MOVEMENT = 1;
+        let LEFT_MOVEMENT = -1;
+        let RIGHT_MOVEMENT = 1;
 
         let currentPosition = this.robot.currentPosition();
-        let position = new Position(currentPosition.x, currentPosition.y, currentPosition.direction);
+        let parsedCommand = InputParser.parse(input.toUpperCase());
 
-        switch (command) {
-            case "PLACE":
-                position = new Position(x, y, direction);
-                (new CommandPlace(this.robot)).execute(position);
+        switch (parsedCommand) {
+            case Command.PLACE.name:
+                let splited = input.toUpperCase().split(/[ ,]+/);
+                let position = new Position(_.toInteger(splited[1]), _.toInteger(splited[2]), splited[3]);
+                (new PlaceCommand(this.robot)).execute(position);
                 break;
-            case "MOVE":
-                (new CommandMove(this.robot)).execute(position);
+            case Command.MOVE.name:
+                let moveCommand = new MoveCommand(this.robot);
+                let p = new Position(currentPosition.x, currentPosition.y, currentPosition.direction);
+                moveCommand.execute((new MoveCommand(this.robot).getNextPosition(p)));
                 break;
-            case "LEFT":
-                (new CommandRotate(this.robot)).execute(position, LEFT_MOVEMENT);
+            case Command.LEFT.name:
+                console.log(Command.LEFT.name);
+                (new RotateCommand(this.robot)).execute(currentPosition, LEFT_MOVEMENT);
                 break;
-            case "RIGHT":
-                (new CommandRotate(this.robot)).execute(position, RIGHT_MOVEMENT);
+            case Command.RIGHT.name:
+                console.log(Command.RIGHT.name);
+                (new RotateCommand(this.robot)).execute(currentPosition, RIGHT_MOVEMENT);
                 break;
-            case "REPORT":
+            case Command.REPORT.name:
+                console.log(this.robot.currentPosition());
                 break;
             default:
-            //TODO: implement this
+                console.log(parsedCommand);
+
         }
 
         return this.robot.currentPosition();

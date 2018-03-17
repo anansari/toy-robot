@@ -1,5 +1,5 @@
-import { Direction } from "@toyrobot/src/Position"
-import AbstractCommand from "@toyrobot/src/command/AbstractCommand"
+import { Direction } from "../Position"
+import AbstractCommand from "./AbstractCommand"
 
 export default class MoveCommand extends AbstractCommand {
 
@@ -7,7 +7,12 @@ export default class MoveCommand extends AbstractCommand {
         if (!super.execute(position)) {
             return false;
         }
-        
+
+        this.robot.setPosition(position);
+        return true;
+    }
+
+    getNextPosition(position) {
         let newPosition = position;
 
         switch (newPosition.direction) {
@@ -24,10 +29,8 @@ export default class MoveCommand extends AbstractCommand {
                 newPosition.x--;
                 break;
             default:
-                //TODO: handle the implementation
+            //TODO: handle the implementation
         }
-
-        this.robot.setPosition(newPosition);
-        return true;
+        return newPosition;
     }
 }

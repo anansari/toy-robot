@@ -1,4 +1,4 @@
-import AbstractCommand from "@toyrobot/src/command/AbstractCommand"
+import AbstractCommand from "./AbstractCommand"
 
 export default class PlaceCommand extends AbstractCommand {
 

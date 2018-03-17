@@ -1,4 +1,4 @@
-import Grid from "@toyrobot/src/Grid";
+import Grid from "../Grid";
 
 export default class AbstractCommand {
 
