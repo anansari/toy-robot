@@ -36,7 +36,7 @@ export default class MoveCommand extends AbstractCommand {
                 newPosition.x--;
                 break;
             default:
-            //TODO: handle the implementation
+                return position;
         }
         return newPosition;
     }

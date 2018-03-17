@@ -4,7 +4,7 @@
   "description": "This is the toy bot which crawls on 5x5 grid.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "find ./test -name '*spec.js' | xargs nyc --reporter=html --reporter=text mocha -R spec --require babel-core/register",
     "start": "babel-node index.js",
     "link_modules": "cd src && npm link && cd .. && npm link @toyrobot/src"
   },
@@ -16,7 +16,11 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-istanbul": "^0.12.2",
     "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.4",
+    "nyc": "^11.6.0",
     "rimraf": "^2.6.2"
   },
   "dependencies": {
