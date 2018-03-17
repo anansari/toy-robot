@@ -1,7 +1,14 @@
 import { Command } from "../command/Command";
 
+/**
+ * Input parser
+ */
 export default class InputParser {
 
+    /**
+     * Parses the user input accroding to the expressions define.
+     * @param {String} input
+     */
     static parse(input) {
 
         let regex = {

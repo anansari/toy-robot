@@ -6,6 +6,9 @@ import InputParser from "../helper/InputParser";
 import { Command } from "../command/Command";
 import _ from "lodash";
 
+/**
+ * Responsible for executing the right command against the input.
+ */
 export default class RobotCommander {
 
     constructor(robot, grid) {
@@ -13,6 +16,10 @@ export default class RobotCommander {
         this.grid = grid
     }
 
+    /**
+     * Takes the user input and executes the relevent command.
+     * @param {String} input 
+     */
     execute(input) {
         let response = false;
         let LEFT_MOVEMENT = -1;

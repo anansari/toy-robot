@@ -1,6 +1,9 @@
 import { Direction } from "../helper/Position"
 import AbstractCommand from "./AbstractCommand"
 
+/**
+ * Responsible for moving the robot into the intended direction
+ */
 export default class MoveCommand extends AbstractCommand {
 
     execute(position) {
@@ -12,6 +15,10 @@ export default class MoveCommand extends AbstractCommand {
         return true;
     }
 
+    /**
+     * Determines the the next possible position for the robot to be.
+     * @param {Position} position 
+     */
     getNextPosition(position) {
         let newPosition = position;
 

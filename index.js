@@ -6,11 +6,17 @@ const readline = require('readline');
 console.log("Toy Robot Simulator ^.^");
 var grid, robot;
 
+/**
+ * initialization block
+ */
 function _init() {
     grid = new Grid(5, 5);
     robot = new Robot();
 }
 
+/**
+ * Takes user input through CLI
+ */
 function _letsGetBusy() {
     console.log("Enter a command, Valid commands are:");
     console.log(" PLACE X,Y,NORTH|SOUTH|EAST|WEST \n MOVE \n LEFT \n RIGHT \n REPORT \n EXIT");
