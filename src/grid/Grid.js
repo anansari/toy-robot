@@ -14,8 +14,8 @@ export default class Grid {
      * @param {Position} position 
      */
     static isPositionValid(position) {
-        return !(position.x < 0 || position.x > Grid.rows ||
-            position.y < 0 || position.y > Grid.rows);
+        return !(position.x < 0 || position.x >= Grid.rows ||
+            position.y < 0 || position.y >= Grid.rows);
     }
 }
 
